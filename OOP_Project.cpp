@@ -1,201 +1,214 @@
+//add employee
+//fire employee
+//promote employee
+//find employee
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
-class Employee
-{
-private:
-    string name;
-    int id;
-    int age;
-    int salary;
-    string adress;
-    int phone;
-    string email;
-    int position;
+
+class Employee{
+protected:
+string name,email,adress,role;
+float salary;
+int id;
+int hours;
 public:
-void setname(string n)
+//test space
+Employee()
 {
-    name=n;
-}
-void setid(int i)
-{
-    id=i;
-}
-void setage(int a)
-{
-    age=a;
-}
-void setsalary(int s)
-{
-    salary=s;
-}
-void setadress(string ad)
-{
-    adress=ad;
-}
-void setphone(int p)
-{
-    phone=p;
-}
-void setemail(string e)
-{
-    email=e;
+    name="arqam ";
+    email="arw ";
+    adress="ss ";
+    role="asd ";
+    salary=0;
+    id=0;
+    hours=0;
 }
 
-void setposition(int po)
-{   
-    position=po;
 
-} 
 
-string getname()
-{
-    return name;
-}
-int getid()
-{
-    return id;
-}
-int getage()
-{
-    return age;
-}
-int getsalary()
-{
-    return salary;
-}
-string getadress()
+
+
+///test space
+
+
+
+string get_adress()
 {
     return adress;
 }
-int getphone()
+float get_salary()
 {
-    return phone;
+    return salary;
 }
-string getemail()
+int get_id()
 {
-    return email;
-}
-
-int getposition()
-{
-    return position;
-}
+    return id;
+}  
+  //All virtual functions
+   void virtual set_employee(){};
+    void virtual fire_employee(){};
+    void virtual show_details(){};
+    // void virtual find_employee(){cout<<"test";};
 };
-int main()
-{ char ch='y';
-    while(ch=='y')
-    {    
-    Employee e1[100];
-    int n;
-    cout<<"HR mangement system"<<endl;
-    cout<<"1. Add employee"<<endl;
-    cout<<"2. Delete employee"<<endl;
-    cout<<"3. Edit employee"<<endl;
-    cout<<"4. Search employee"<<endl;
-    cout<<"5. Show all employee"<<endl;
-    cout<<"6. Exit"<<endl;
-    cout<<"Enter your choice: ";
 
-    
-    cin>>n;
-    switch(n)
+class Add_Employee:public Employee
+{
+    public:
+     
+   void set_employee()
     {
+      cout<<"enter the name of employee"<<endl;
+      cin>>name;
+      cout<<"Enter Email of Employee"<<endl;
+      cin>>email;
+      cout<<"Enter adress of Employee"<<endl;
+      cin>>adress;
+      cout<<"Enter Role of Employee "<<endl;
+       cout<<"1. Develepor"<<endl;
+         cout<<"2. Manager"<<endl;
+         cout<<"3. Accountant"<<endl;
+        cin>>role;
+        if (role=="1")
 
-        case 1:
-        {
-            int i;
-            cout<<"Enter the number of employee you want to add: ";
-            cin>>i;
-            for(int j=0;j<i;j++)
+    {   
+        cout<<"ENter hours of Employee"<<endl;
+        cin>>hours;
+        salary=hours*1000;
+    }
+    else if (role=="2")
+    {
+        cout<<"ENter hours of Employee"<<endl;
+        cin>>hours;
+        salary=hours*2000;
+    }
+    else if (role=="3")
+    {
+        cout<<"ENter hours of Employee"<<endl;
+        cin>>hours;
+        salary=hours*3000;
+    }
+    else
+    {
+        cout<<"Enter valid role"<<endl;
+    }
+
+
+
+
+
+        cout<<"Enter ID of Employee"<<endl;
+        cin>>id;
+    
+   }};
+   class Modify_Employee:public Employee
+   {
+       public:
+     
+         void fire_employee()
+         {
+              cout<<"Deatils of Employee you fired is :"<<endl;
+              cout<<"name of employee is "<<name<<endl;
+                cout<<"email of employee is "<<email<<endl;
+                cout<<"adress of employee is "<<adress<<endl;
+                cout<<"role of employee is "<<role<<endl;
+                cout<<"salary of employee is "<<salary<<endl;
+                cout<<"id of employee is "<<id<<endl;
+                cout<<"employee fired"<<endl;
+                name=" ";
+                email=" ";
+                adress=" ";
+                role=" ";
+                salary=0;
+                id=0;
+         }
+            void show_details()
             {
-                cout<<"Enter the name of employee: ";
-                string name;
-                cin>>name;
-                e1[j].setname(name);
-                cout<<"Enter the id of employee: ";
-                int id;
-                cin>>id;
-                e1[j].setid(id);
-                cout<<"Enter the age of employee: ";
-                int age;
-                cin>>age;
-                e1[j].setage(age);
-                cout<<"Enter the salary of employee: ";
-                int salary;
-                cin>>salary;
-                e1[j].setsalary(salary);
-                cout<<"Enter the adress of employee: ";
-                string adress;
-                cin>>adress;
-                e1[j].setadress(adress);
-                cout<<"Enter the phone of employee: ";
-                int phone;
-                cin>>phone;
-                e1[j].setphone(phone);
-                cout<<"Enter the email of employee: ";
-                string email;
-                cin>>email;
-                e1[j].setemail(email);
-                cout<<"Enter the position of employee: ";
-                int position;
-                cin>>position;
-                e1[j].setposition(position);
-                cout<<"Employee added successfully"<<endl;
-                cout<<"Do you want to add more employee(y/n): ";
-                cin>>ch;
-            if (ch=='n')
-                {  
-                    cout<<"Thank you for using our system"<<endl;
-                    break;
-                }
-                
+                cout<<"name of employee is "<<name<<endl;
+                cout<<"email of employee is "<<email<<endl;
+                cout<<"adress of employee is "<<adress<<endl;
+                cout<<"role of employee is "<<role<<endl;
+                cout<<"salary of employee is "<<salary<<endl;
+                cout<<"id of employee is "<<id<<endl;
+            }
+   };
+    
 
+   int main()
+   {   int choice;
+       Employee *obj1[100];
+       Modify_Employee obj2;
+       Add_Employee obj3;
+       int n;
+
+    cout << "----------------------------------------------------" << endl;
+    cout << "|                HR Management System               |" << endl;
+    cout << "----------------------------------------------------" << endl << endl;
+
+    cout << "Please select an option:" << endl;
+    cout << "1. Hire a new employee" << endl;
+    cout << "2. Terminate an existing employee" << endl;
+    cout << "3. View details of currently working employees" << endl << endl;
+
+
+    cout << "Enter your choice (1-3): ";
+
+
+    cin>>choice;
+     switch(choice)
+     {
+         case 1:
+         int n;
+         cout<<"enter the number of employees you want to hire"<<endl;
+         cin>>n;
+            for (int i = 0; i <n ; i++)
+            {
+                obj1[i]=&obj3;
+                obj1[i]->set_employee();
+            } 
+         break;
+         case 2:
+         int id;
+         cout<<"enter the id of the employee you want to fire"<<endl;
+            cin>>id;
+            for (int i = 0; i <id+1 ; i++)
+            {  obj1[i]=&obj2;
+                if (obj1[i]->get_id()==id)
+                {  
+                    obj1[i]->fire_employee();
+                }   
+                else
+                {
+                    cout<<"employee not found"<<endl;
+                }         
             }
             break;
+        case 3:
+        int temp;
+        cout<<"enter the id of the employee you want to find"<<endl;
+        cin>>temp;
+        for (int i = 0; i <temp+1 ; i++)
+        {    obj1[i]=&obj2;
+            if (obj1[i]->get_id()==temp)
+            {  
+                obj1[i]->show_details();
+              
+            }   
+        else    {
+                    cout<<"employee not found"<<endl;
+                }                  
         }
-        case 2:
-        {
-            int i;
-            cout<<"Enter the number of employee you want to delete: ";
-            cin>>i;
-            for(int j=0;j<i;j++)
-            {
-                cout<<"Enter the name of employee: ";
-                string name;
-                cin>>name;
-                e1[j].setname(name);
-                cout<<"Enter the id of employee: ";
-                int id;
-                cin>>id;
-                e1[j].setid(id);
-                cout<<"Enter the age of employee: ";
-                int age;
-                cin>>age;
-                e1[j].setage(age);
-                cout<<"Enter the salary of employee: ";
-                int salary;
-                cin>>salary;
-                e1[j].setsalary(salary);
-                cout<<"Enter the adress of employee: ";
-                string adress;
-                cin>>adress;
-                e1[j].setadress(adress);
-                cout<<"Enter the phone of employee: ";
-                int phone;
-                cin>>phone;
-                e1[j].setphone(phone);
-                cout<<"Enter the email of employee: ";
-                cout<<"Employee deleted successfully"<<endl;
-                cout<<"Do you want to delete more employee(y/n): ";
-                cin>>ch;
-               if (ch=='n')
-                {  
-                    cout<<"Thank you for using our system"<<endl;
-                    break;
-                }
+        
+         
+        
+     }
+      }
 
-              }
-            } 
-        }
-    }
-}
+
+    
+
+     
+
+
+
