@@ -82,4 +82,5 @@ class Add_Employee:public Employee
 
                 cout<<"salary of employee is "<<salary<<endl;
 
-     }
+   
+   }
