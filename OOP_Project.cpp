@@ -1,7 +1,3 @@
-//add employee
-//fire employee
-//promote employee
-//find employee
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,25 +10,19 @@ float salary=0;
 int id;
 int hours;
 public:
-//test space
-//Employee()
-//{
-  //  name="arqam ";
-    //email="arw ";
-   // adress="ss ";
-    //role="asd ";
-    //salary=0;
-  //  id=0;
-    //hours=0;
-//}
+string get_name()
+{
+    return name;
+}
+string get_email()
+{
+    return email;
+}
 
-
-
-
-
-///test space
-
-
+string get_role()
+{
+    return role;
+}
 
 string get_adress()
 {
@@ -50,11 +40,17 @@ void set_id(int x)
 {
     id=x;
 }
-  //All virtual functions
+
+int return_id()
+{
+    return id;
+}
+
+
    virtual void  set_employee(){};
    virtual void fire_employee(){};
     virtual void show_details(){};
-    // void virtual find_employee(){cout<<"test";};
+
 };
 
 class Add_Employee:public Employee
@@ -62,13 +58,6 @@ class Add_Employee:public Employee
     public:
     void show_details()
      {
-                // cout<<"name of employee hired is "<<name<<endl;
-                // cout<<"email of employee hired is "<<email<<endl;
-                // cout<<"adress of employee hired is "<<adress<<endl;
-                // cout<<"role of employee hired is "<<role<<endl;
-                // cout<<"salary of employee hired is "<<salary<<endl;
-                // //cout<<"id of employee hired is "<<id<<endl;
-                
             
                 cout<<"name of employee is  "<<name<<endl;
                 cout<<"email of employee is "<<email<<endl;
@@ -90,9 +79,9 @@ class Add_Employee:public Employee
                     cout<<"Enter valid role"<<endl;
                     
                 }
-                // cout<<"role of employee is "<<role<<endl;
+
                 cout<<"salary of employee is "<<salary<<endl;
-                //cout<<"id of employee is "<<id<<endl;
+
             
      }
      
@@ -132,24 +121,9 @@ class Add_Employee:public Employee
     {
         cout<<"Enter valid role"<<endl;
     }
-
-
-
-
-
-       // cout<<"Enter ID of Employee"<<endl;
-        //cin>>id;
-     
+ 
    }
-    //  void show_details()
-    //  {
-    //      cout<<"name of employee hired is "<<name<<endl;
-    //             cout<<"email of employee hired is "<<email<<endl;
-    //             cout<<"adress of employee hired is "<<adress<<endl;
-    //             cout<<"role of employee hired is "<<role<<endl;
-    //             cout<<"salary of employee hired is "<<salary<<endl;
-    //             cout<<"id of employee hired is "<<id<<endl;
-    //  }
+    
      };
    class Modify_Employee:public Employee
    {
@@ -177,34 +151,30 @@ class Add_Employee:public Employee
                     cout<<"Enter valid role"<<endl;
                     
                 }
-                // cout<<"role of employee is "<<role<<endl;
+
                 cout<<"salary of employee is "<<salary<<endl;
-                //cout<<"id of employee is "<<id<<endl;
+
             }
+            
    };
    class Fire_Employee:public Employee
    {
        public:
        void show_details()
             {
-                cout<<"name of employee fired is :"<<name<<endl;
-                cout<<"email of employee fired is :"<<email<<endl;
-                cout<<"adress of employee fired :"<<adress<<endl;
-                cout<<"role of employee is fired is :"<<role<<endl;
-                cout<<"salary of employee fired is : "<<salary<<endl;
-               // cout<<"id of employee fired is : "<<id<<endl;
+                cout<<"name of employee fired is :"<<get_name()<<endl;
+                cout<<"email of employee fired is :"<<get_name()<<endl;
+                cout<<"adress of employee fired :"<<get_adress()<<endl;
+                cout<<"role of employee is fired is :"<<get_role()<<endl;
+                cout<<"salary of employee fired is : "<<get_salary()<<endl;
+
             }
        void fire_employee()
          {  
-              cout<<"Deatils of Employee you fired is :"<<endl;
-                show_details();
+             
+             
                 cout<<"employee fired"<<endl;
-                name=" ";
-                email=" ";
-                adress=" ";
-                role=" ";
-                salary=0;
-                //id=0;
+                
          }
    };
     
@@ -221,141 +191,118 @@ class Add_Employee:public Employee
         int id=0;   
       obj1[id]=&obj3;
         obj1[id]->set_id(id);
+         string mainpass="abc123";
+         string pass;
+        cout<<"Enter password to acess the HR system"<<endl;
+        cin>>pass;
+        string change;
+    
+    if (pass==mainpass){
+        cout<<"correct Password"<<endl;
+        cout<<"Acess granted"<<endl;
    while(d==1)
    { 
-    cout << "----------------------------------------------------" << endl;
+    cout << "----------------------------------------------------"  << endl;
     cout << "|                                                   |" << endl;
     cout << "|                HR Management System               |" << endl;
     cout << "|                                                   |" <<endl;
-    cout << "----------------------------------------------------" << endl;
+    cout << "----------------------------------------------------"  << endl;
 
     cout << "Please select an option:" << endl;
+ 
     cout << "1. Hire a new employee" << endl;
+ 
     cout << "2. Terminate an existing employee" << endl;
-    cout << "3. View details of currently working employees" << endl << endl;
+ 
+    cout << "3. View details of currently working employees" << endl ;
 
+    
+    cout<<"4. change password   "<<endl<<endl;
+    
 
-    cout << "Enter your choice (1-3): ";
-
+    cout << "Enter your choice (1-3): "<<endl;
+    
     cin>>choice;
      switch(choice)
      {
          case 1:
     
-           // int temp1;
+
                 obj1[id]=&obj3;
-         //cout<<"enter the number of employees you want to hire"<<endl;
-         //cin>>id;
-           // for (int i = 0; i <temp1 ; i++)
-            //{
                 obj1[id]->set_id(id);
                 obj1[id]->set_employee();
                 obj1[id]->show_details();
                 cout<<"id of employee is : "<<id<<endl;
                 id++;
 
-           // } 
+
             
          break;
     
          case 2:
-       cout<<"work in progress"<<endl;
+       cout<<"Enter ID: ";
+       int idchk;
+       cin>>idchk;
+       for (int i = 0; i < id; i++)
+       {
+            if(idchk==obj1[i]->return_id())
+            {
+                for (int j = i; j < id-1; j++)
+                {
+                    obj1[j]=obj1[j+1];
+                }
+                id--;
+                cout<<"Employee terminated\n";
+                obj1[id]=&obj4;
+                obj1[id]->fire_employee();   
+                      }
+            else{
+            cout<<"employee not found"<<endl;
+       }
+       }
            
            
-       // id to fire
-
-         //int id;
-        //  //cout<<"enter the id of the employee you want to fire"<<endl;
-        //     cin>>id;
-        //     for (int i = 0; i <id+1 ; i++)
-        //     {  obj1[i]=&obj4;
-        //         if (obj1[i]->get_id()==id)
-        //         {  
-        //             obj1[i]->fire_employee();
-        //         }   
-        //         else
-        //         {
-        //             cout<<"employee not found"<<endl;
-        //         }         
-        //     }
             
             break;
     
         case 3:
-    
-        // int temp;
-        // cout<<"enter the id of the employee you want to find"<<endl;
-        // cin>>temp;
-        // for (int i = 0; i <temp+1 ; i++)
-        // {   
-        //     int temp;
-        //     cout<<"id of employee you want to find details"<<endl;
-        //     cin>>temp;
-        //         obj1[temp]=&obj2;
-        //     if (obj1[temp]==obj1[id])
-        //     {  
-        //         obj1[id]->show_details();
-              
-        //     }   
-        // else
-        //     {
-        //             cout<<"employee not found"<<endl;
-                    
-        //         }  
-        //         break;   
-        //  int temp_id;
-        //         bool found = false;
-        //         cout << "Enter the ID of the employee you want to find: ";
-        //         cin >> temp_id;
-        //         //test
 
 
 int id_to_find;
-bool found = false;
+
 
 cout << "Enter the ID of the employee you want to find: ";
 cin >> id_to_find;
 
 for (int i = 0; i < 50; i++) {
-    // get_id(id);
     if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {
-        obj1[id_to_find]->show_details();
-        found = true;
-        break;
-    }
-}
+         obj1[id_to_find]->show_details();
+         
+     
+    }}
+     break;
+     case 4:
+     string temp=" ";
+     cout<<"Enter orignal password"<<endl;
+     cin>>temp;
+     if (temp==mainpass)
+     {
+        cout<<"correct password"<<endl;
+        cout<<"Enter new password"<<endl;
+        cin>>mainpass;
 
-if (!found) {
-    cout << "Employee not found." << endl;
-}
+     }
+     else 
+     cout<<"wrong password"<<endl;
+     
+       }
 
 
 
 
 
-                ///
-                // for (int i = 0; i < temp_id+1; i++) {
-                //     if (obj1[temp_id]==obj1[i]) {
-                //         if( obj.get_salary()==0)
-                //         {
-                //             cout<<"Employee not found."<<endl;
-
-                //         }
-                //         else
-                //         {
-                //             obj1[i]->show_details();
-                //         }
-                //         obj1[i]->show_details();
-                //         found = true;
-                //         break;
-                //     }
-                // }
-                // if (!found) {
-                //     cout << "Employee not found." << endl;
-                // }
-                // break;             
-       // }        
-     }  
+    
+           
         cout<<"To exit program press 2 or any other key to continue: ";
         cin>>d;
 
@@ -365,30 +312,21 @@ if (!found) {
     else {
         continue;
     }
-}  
-        // cout<<"To exit program press 2 or any other key to continue: ";
-        // cin>>d;
-        // if(d==2)
-        // {
-        //     break;
-        // }
-        // else
-        // {
-        //     continue;
-        // }
+      
          
 
           
+    
+     }}else
+        cout<<"Invalid Password"<<endl;
+    }
+    
+             
+
 
     
-     
-     }
-   
 
+     
 
     
-
-     
-
-
 
