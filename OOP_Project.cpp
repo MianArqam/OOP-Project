@@ -277,6 +277,7 @@ cin >> id_to_find;
 for (int i = 0; i < 50; i++) {
     if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {
          obj1[id_to_find]->show_details();
+         break;
          
      
     }}
