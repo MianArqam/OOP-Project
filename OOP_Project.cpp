@@ -49,7 +49,7 @@ int return_id()
 
    virtual void  set_employee(){};
    virtual void fire_employee(){};
-    virtual void show_details(){};
+    virtual void show_details()=0;
 
 };
 
@@ -182,7 +182,6 @@ class Add_Employee:public Employee
    int main()
     {   int choice;
         Employee *obj1[100];
-        Employee obj;
         Modify_Employee obj2;
         Add_Employee obj3;
         Fire_Employee obj4;
