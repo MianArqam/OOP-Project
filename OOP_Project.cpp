@@ -49,7 +49,7 @@ int return_id()
 
    virtual void  set_employee(){};
    virtual void fire_employee(){};
-    virtual void show_details(){};
+    virtual void show_details()=0;
 
 };
 
@@ -182,7 +182,6 @@ class Add_Employee:public Employee
    int main()
     {   int choice;
         Employee *obj1[100];
-        Employee obj;
         Modify_Employee obj2;
         Add_Employee obj3;
         Fire_Employee obj4;
@@ -273,15 +272,13 @@ int id_to_find;
 
 cout << "Enter the ID of the employee you want to find: ";
 cin >> id_to_find;
-//bool if_found=false;
-// for (int i = 0; i <id_to_find+1; i++) {
-    {if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {     ////commit krna ha is chz ko sahi kr ka
-         obj1[id_to_find]->show_details();}
-         else 
-         cout<<"Employee not found";
-         break;
-          
-    }
+
+for (int i = 0; i < 50; i++) {
+    if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {
+         obj1[id_to_find]->show_details();
+         
+     
+    }}
      break;
      case 4:
      string temp=" ";
