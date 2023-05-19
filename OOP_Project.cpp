@@ -10,7 +10,7 @@ float salary=0;
 int id;
 int hours;
 public:
-string get_name()
+string get_name()     
 {
     return name;
 }
@@ -273,13 +273,15 @@ int id_to_find;
 
 cout << "Enter the ID of the employee you want to find: ";
 cin >> id_to_find;
-
-for (int i = 0; i < 50; i++) {
-    if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {
-         obj1[id_to_find]->show_details();
-         
-     
-    }}
+//bool if_found=false;
+// for (int i = 0; i <id_to_find+1; i++) {
+    {if (obj1[id_to_find]->get_id(id_to_find) == id_to_find) {     ////commit krna ha is chz ko sahi kr ka
+         obj1[id_to_find]->show_details();}
+         else 
+         cout<<"Employee not found";
+         break;
+          
+    }
      break;
      case 4:
      string temp=" ";
